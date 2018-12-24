@@ -3,8 +3,8 @@ package id.co.mandiri.controller;
 import com.maryanto.dimas.plugins.web.commons.ui.datatables.DataTablesRequest;
 import com.maryanto.dimas.plugins.web.commons.ui.datatables.DataTablesResponse;
 import id.co.mandiri.dto.CategoryDeviceDTO;
-import id.co.mandiri.dto.CategoryDeviceRequestNewMapper;
-import id.co.mandiri.dto.CategoryDeviceRequestUpdateMapper;
+import id.co.mandiri.dto.CategoryDeviceMapperRequestNew;
+import id.co.mandiri.dto.CategoryDeviceMapperRequestUpdate;
 import id.co.mandiri.entity.CategoryDevice;
 import id.co.mandiri.service.CategoryDeviceService;
 import lombok.extern.slf4j.Slf4j;
@@ -60,14 +60,14 @@ public class CategoryDeviceController {
 
     @PostMapping("/")
     public ResponseEntity<CategoryDevice> save(@Valid @RequestBody CategoryDeviceDTO.CategoriDeviceRequestNewDTO params) {
-        CategoryDevice value = CategoryDeviceRequestNewMapper.converter.convertToEntity(params);
+        CategoryDevice value = CategoryDeviceMapperRequestNew.converter.convertToEntity(params);
         value = service.save(value);
         return new ResponseEntity<>(value, HttpStatus.CREATED);
     }
 
     @PutMapping("/")
     public ResponseEntity<CategoryDevice> update(@Valid @RequestBody CategoryDeviceDTO.CategoryDeviceRequestUpdateDTO params) {
-        CategoryDevice value = CategoryDeviceRequestUpdateMapper.converter.convertToEntity(params);
+        CategoryDevice value = CategoryDeviceMapperRequestUpdate.converter.convertToEntity(params);
         value = service.save(value);
         return new ResponseEntity<>(value, HttpStatus.CREATED);
     }
