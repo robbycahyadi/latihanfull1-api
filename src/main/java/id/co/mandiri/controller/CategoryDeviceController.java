@@ -28,13 +28,7 @@ public class CategoryDeviceController {
         if (params == null) params = new CategoryDevice();
         log.info("draw: {}, start: {}, length: {}, type: {}", draw, start, length, params);
         return service.datatables(
-                new DataTablesRequest(
-                        draw,
-                        length,
-                        start,
-                        sSortDir0,
-                        iSortCol0,
-                        params)
+                new DataTablesRequest(draw, length, start, sSortDir0, iSortCol0, params)
         );
     }
 
