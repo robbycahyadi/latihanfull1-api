@@ -6,7 +6,11 @@ import id.co.mandiri.entity.CategoryDevice;
 import id.co.mandiri.service.CategoryDeviceService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @Slf4j
 @RestController
@@ -31,5 +35,36 @@ public class CategoryDeviceController {
                 new DataTablesRequest(draw, length, start, sSortDir0, iSortCol0, params)
         );
     }
+
+    @GetMapping("/list")
+    public ResponseEntity<List<CategoryDevice>> list() {
+        List<CategoryDevice> list = service.findAll();
+        if (list.isEmpty())
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        else return new ResponseEntity<>(list, HttpStatus.OK);
+    }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<CategoryDevice> findById(@PathVariable("id") String id) {
+        CategoryDevice params = service.findId(id);
+        if (params != null) {
+            return new ResponseEntity<>(params, HttpStatus.OK);
+        } else {
+            return new ResponseEntity<>(new CategoryDevice(), HttpStatus.NO_CONTENT);
+        }
+    }
+
+    @PostMapping("/")
+    public ResponseEntity<CategoryDevice> save(@RequestBody CategoryDevice params) {
+        params = service.save(params);
+        return new ResponseEntity<>(params, HttpStatus.CREATED);
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<CategoryDevice> delete(@PathVariable("id") String id) {
+        boolean deleted = service.removeById(id);
+        return new ResponseEntity<>(HttpStatus.OK);
+    }
+
 
 }
