@@ -1,37 +1,26 @@
 package id.co.mandiri.entity;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.ToString;
 import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.annotations.Type;
 
 import javax.persistence.*;
-import java.util.ArrayList;
-import java.util.List;
 
 @Entity
-@Table(name = "master_color")
+@Table(name = "master_device")
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@ToString(exclude = "masterDevices")
-public class MasterColor {
-
-    public MasterColor(String id, String name, String code, String description) {
-        this.id = id;
-        this.name = name;
-        this.code = code;
-        this.description = description;
-    }
+public class MasterDevice {
 
     @Id
     @GenericGenerator(name = "uuid_gen", strategy = "uuid2")
     @GeneratedValue(generator = "uuid_gen")
     @Column(name = "id", nullable = false, length = 64)
     private String id;
+
     @Column(name = "name", nullable = false, length = 150)
     private String name;
     @Column(name = "code", nullable = false, length = 100)
@@ -41,7 +30,27 @@ public class MasterColor {
     @Column(name = "description")
     private String description;
 
-    @JsonIgnore
-    @OneToMany(mappedBy = "color")
-    private List<MasterDevice> masterDevices = new ArrayList<>();
+    @ManyToOne
+    @JoinColumn(name = "category_id", nullable = false)
+    private CategoryDevice category;
+
+    @ManyToOne
+    @JoinColumn(name = "color_id", nullable = false)
+    private MasterColor color;
+
+    @ManyToOne
+    @JoinColumn(name = "brand_id", nullable = false)
+    private DeviceBrand brand;
+
+    @ManyToOne
+    @JoinColumn(name = "condition_id", nullable = false)
+    private DeviceCondition condition;
+
+    @ManyToOne
+    @JoinColumn(name = "unit_capacity_id", nullable = false)
+    private DeviceUnitCapacity unitCapacity;
+
+    @ManyToOne
+    @JoinColumn(name = "loan_status_id", nullable = false)
+    private DeviceLoanStatus loanStatus;
 }

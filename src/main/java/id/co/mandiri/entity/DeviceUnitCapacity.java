@@ -1,19 +1,31 @@
 package id.co.mandiri.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.annotations.Type;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "device_unit_capacity")
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
+@ToString(exclude = "masterDevices")
 public class DeviceUnitCapacity {
+
+    public DeviceUnitCapacity(String id, String name, String code, String description) {
+        this.id = id;
+        this.name = name;
+        this.code = code;
+        this.description = description;
+    }
 
     @Id
     @GenericGenerator(name = "uuid_gen", strategy = "uuid2")
@@ -28,4 +40,8 @@ public class DeviceUnitCapacity {
     @Type(type = "text")
     @Column(name = "description")
     private String description;
+
+    @JsonIgnore
+    @OneToMany(mappedBy = "unitCapacity")
+    private List<MasterDevice> masterDevices = new ArrayList<>();
 }
