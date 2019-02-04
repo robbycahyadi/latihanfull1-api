@@ -29,6 +29,10 @@ public class CategoryDeviceService implements ServiceCrudDataTablesPattern<Categ
         return null;
     }
 
+    public Iterable<CategoryDevice> findAlls() {
+        return categoryDao.findAlls();
+    }
+
     @Override
     @Transactional
     public CategoryDevice save(CategoryDevice value) {

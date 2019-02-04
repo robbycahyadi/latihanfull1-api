@@ -33,6 +33,10 @@ public class DeviceBrandDao implements DaoCrudDataTablesPattern<DeviceBrand, Str
         return null;
     }
 
+    public Iterable<DeviceBrand> finddAlls() {
+        return repository.findAll();
+    }
+
     @Override
     public DeviceBrand save(DeviceBrand deviceBrand) {
         return repository.save(deviceBrand);

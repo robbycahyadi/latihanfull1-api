@@ -48,6 +48,11 @@ public class MasterColorController {
         else return new ResponseEntity<>(list, HttpStatus.OK);
     }
 
+    @GetMapping("/lists")
+    public Iterable<MasterColor> lists() {
+        return service.findAlls();
+    }
+
     @GetMapping("/{id}")
     public ResponseEntity<MasterColor> findById(@PathVariable("id") String id) {
         MasterColor params = service.findId(id);

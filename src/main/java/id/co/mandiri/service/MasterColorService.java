@@ -28,6 +28,10 @@ public class MasterColorService implements ServiceCrudDataTablesPattern<MasterCo
         return null;
     }
 
+    public Iterable<MasterColor> findAlls() {
+        return colorDao.findAlls();
+    }
+
     @Override
     @Transactional
     public MasterColor save(MasterColor value) {

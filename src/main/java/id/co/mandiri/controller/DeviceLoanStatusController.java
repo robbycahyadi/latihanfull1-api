@@ -48,6 +48,11 @@ public class DeviceLoanStatusController {
         else return new ResponseEntity<>(list, HttpStatus.OK);
     }
 
+    @GetMapping("/lists")
+    public Iterable<DeviceLoanStatus> lists() {
+        return service.findAlls();
+    }
+
     @GetMapping("/{id}")
     public ResponseEntity<DeviceLoanStatus> findById(@PathVariable("id") String id) {
         DeviceLoanStatus params = service.findId(id);

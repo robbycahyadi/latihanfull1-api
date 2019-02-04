@@ -48,6 +48,11 @@ public class CategoryDeviceController {
         else return new ResponseEntity<>(list, HttpStatus.OK);
     }
 
+    @GetMapping("/lists")
+    public Iterable<CategoryDevice> lists() {
+        return service.findAlls();
+    }
+
     @GetMapping("/{id}")
     public ResponseEntity<CategoryDevice> findById(@PathVariable("id") String id) {
         CategoryDevice params = service.findId(id);

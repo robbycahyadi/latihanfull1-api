@@ -28,6 +28,10 @@ public class MasterDeviceService implements ServiceCrudDataTablesPattern<MasterD
         return null;
     }
 
+    public Iterable<MasterDevice> findAlls() {
+        return dao.findAlls();
+    }
+
     @Override
     @Transactional
     public MasterDevice save(MasterDevice value) {

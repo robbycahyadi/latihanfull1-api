@@ -48,6 +48,11 @@ public class DeviceUnitCapacityController {
         else return new ResponseEntity<>(list, HttpStatus.OK);
     }
 
+    @GetMapping("/lists")
+    public Iterable<DeviceUnitCapacity> lists() {
+        return service.findAlls();
+    }
+
     @GetMapping("/{id}")
     public ResponseEntity<DeviceUnitCapacity> findById(@PathVariable("id") String id) {
         DeviceUnitCapacity params = service.findId(id);

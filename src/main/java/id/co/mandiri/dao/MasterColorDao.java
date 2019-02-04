@@ -33,6 +33,10 @@ public class MasterColorDao implements DaoCrudDataTablesPattern<MasterColor, Str
         return null;
     }
 
+    public Iterable<MasterColor> findAlls() {
+        return masterColorRepository.findAll();
+    }
+
     @Override
     public MasterColor save(MasterColor masterColor) {
         return masterColorRepository.save(masterColor);

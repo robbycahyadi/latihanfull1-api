@@ -28,6 +28,10 @@ public class DeviceBrandService implements ServiceCrudDataTablesPattern<DeviceBr
         return null;
     }
 
+    public Iterable<DeviceBrand> findAlls() {
+        return dao.finddAlls();
+    }
+
     @Override
     @Transactional
     public DeviceBrand save(DeviceBrand value) {

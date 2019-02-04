@@ -48,6 +48,11 @@ public class MasterDeviceController {
         else return new ResponseEntity<>(list, HttpStatus.OK);
     }
 
+    @GetMapping("/lists")
+    public Iterable<MasterDevice> lists() {
+        return service.findAlls();
+    }
+
     @GetMapping("/{id}")
     public ResponseEntity<MasterDevice> findById(@PathVariable("id") String id) {
         MasterDevice params = service.findId(id);

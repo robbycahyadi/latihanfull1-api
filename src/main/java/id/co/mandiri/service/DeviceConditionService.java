@@ -28,6 +28,10 @@ public class DeviceConditionService implements ServiceCrudDataTablesPattern<Devi
         return null;
     }
 
+    public Iterable<DeviceCondition> findAlls() {
+        return dao.findAlls();
+    }
+
     @Override
     @Transactional
     public DeviceCondition save(DeviceCondition value) {

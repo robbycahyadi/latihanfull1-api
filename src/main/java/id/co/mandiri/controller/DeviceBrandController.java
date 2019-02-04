@@ -48,6 +48,11 @@ public class DeviceBrandController {
         else return new ResponseEntity<>(list, HttpStatus.OK);
     }
 
+    @GetMapping("/lists")
+    public Iterable<DeviceBrand> lists() {
+        return service.findAlls();
+    }
+
     @GetMapping("/{id}")
     public ResponseEntity<DeviceBrand> findById(@PathVariable("id") String id) {
         DeviceBrand params = service.findId(id);

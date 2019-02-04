@@ -33,6 +33,10 @@ public class DeviceConditionDao implements DaoCrudDataTablesPattern<DeviceCondit
         return null;
     }
 
+    public Iterable<DeviceCondition> findAlls() {
+        return repository.findAll();
+    }
+
     @Override
     public DeviceCondition save(DeviceCondition deviceCondition) {
         return repository.save(deviceCondition);

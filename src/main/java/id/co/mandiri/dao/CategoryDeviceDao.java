@@ -34,6 +34,10 @@ public class CategoryDeviceDao implements DaoCrudDataTablesPattern<CategoryDevic
         return null;
     }
 
+    public Iterable<CategoryDevice> findAlls() {
+        return categoryDeviceRepository.findAll();
+    }
+
     @Override
     public CategoryDevice save(CategoryDevice categoryDevice) {
         return categoryDeviceRepository.save(categoryDevice);

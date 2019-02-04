@@ -29,6 +29,10 @@ public class MasterDeviceDao implements DaoCrudDataTablesPattern<MasterDevice, S
         return repository.findOne(s);
     }
 
+    public Iterable<MasterDevice> findAlls() {
+        return repository.findAll();
+    }
+
     @Override
     @Deprecated
     public List<MasterDevice> findAll() {

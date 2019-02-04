@@ -48,6 +48,11 @@ public class DeviceConditionController {
         else return new ResponseEntity<>(list, HttpStatus.OK);
     }
 
+    @GetMapping("/lists")
+    public Iterable<DeviceCondition> lists() {
+        return service.findAlls();
+    }
+
     @GetMapping("/{id}")
     public ResponseEntity<DeviceCondition> findById(@PathVariable("id") String id) {
         DeviceCondition params = service.findId(id);

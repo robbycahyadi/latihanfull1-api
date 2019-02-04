@@ -28,6 +28,10 @@ public class DeviceUnitCapacityService implements ServiceCrudDataTablesPattern<D
         return null;
     }
 
+    public Iterable<DeviceUnitCapacity> findAlls() {
+        return dao.findAlls();
+    }
+
     @Override
     @Transactional
     public DeviceUnitCapacity save(DeviceUnitCapacity value) {

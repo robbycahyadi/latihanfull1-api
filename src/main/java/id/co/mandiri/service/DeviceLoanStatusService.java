@@ -28,6 +28,10 @@ public class DeviceLoanStatusService implements ServiceCrudDataTablesPattern<Dev
         return null;
     }
 
+    public Iterable<DeviceLoanStatus> findAlls() {
+        return dao.findAlls();
+    }
+
     @Override
     @Transactional
     public DeviceLoanStatus save(DeviceLoanStatus value) {

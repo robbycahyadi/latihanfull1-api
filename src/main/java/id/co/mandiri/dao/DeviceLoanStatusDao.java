@@ -33,6 +33,10 @@ public class DeviceLoanStatusDao implements DaoCrudDataTablesPattern<DeviceLoanS
         return null;
     }
 
+    public Iterable<DeviceLoanStatus> findAlls() {
+        return repository.findAll();
+    }
+
     @Override
     public DeviceLoanStatus save(DeviceLoanStatus deviceLoanStatus) {
         return repository.save(deviceLoanStatus);

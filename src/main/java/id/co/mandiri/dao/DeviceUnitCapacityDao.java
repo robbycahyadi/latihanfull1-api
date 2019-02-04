@@ -33,6 +33,10 @@ public class DeviceUnitCapacityDao implements DaoCrudDataTablesPattern<DeviceUni
         return null;
     }
 
+    public Iterable<DeviceUnitCapacity> findAlls() {
+        return repository.findAll();
+    }
+
     @Override
     public DeviceUnitCapacity save(DeviceUnitCapacity deviceUnitCapacity) {
         return repository.save(deviceUnitCapacity);
